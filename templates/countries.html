@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Select Country</h2>
+
+<div class="row">
+
+{% for country in countries %}
+
+<div class="col-md-3">
+
+<div class="card p-4 shadow text-center mb-3">
+
+<h4>{{ country }}</h4>
+
+<p>Explore news categories</p>
+
+<a href="/country/{{ country }}" class="btn btn-success">
+Explore
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

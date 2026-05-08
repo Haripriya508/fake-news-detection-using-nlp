@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ category }} News in {{ country }}</h2>
+
+<div class="row">
+
+{% for news in articles %}
+
+<div class="col-md-4">
+
+<div class="card shadow p-3 mb-4">
+
+<h5>{{ news.title }}</h5>
+
+<p>{{ news.description }}</p>
+
+<a href="{{ news.url }}" target="_blank" class="btn btn-primary">
+Read Full Article
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

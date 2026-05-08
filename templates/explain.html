@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>How the Model Works</h2>
+
+<ul>
+
+{% for step in explanation %}
+
+<li>{{ step }}</li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}

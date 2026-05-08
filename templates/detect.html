@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Fake News Detection</h2>
+
+<form method="POST">
+
+<textarea name="news"
+class="form-control"
+rows="6"
+placeholder="Paste news article here..."
+required></textarea>
+
+<br>
+
+<button class="btn btn-success">Predict</button>
+
+</form>
+
+
+{% if prediction %}
+
+<div class="card mt-4 p-4 shadow text-center">
+
+{% if "Fake" in prediction %}
+
+<h2 style="color:red">{{ prediction }}</h2>
+
+{% else %}
+
+<h2 style="color:green">{{ prediction }}</h2>
+
+{% endif %}
+
+{% if confidence %}
+
+<p>Model Confidence: {{ confidence }}%</p>
+
+<div class="progress">
+
+<div class="progress-bar bg-success"
+role="progressbar"
+aria-valuenow="{{ confidence }}"
+aria-valuemin="0"
+aria-valuemax="100"
+style="width: {{ confidence }}%">
+
+{{ confidence }}%
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+
+{% if related_news %}
+
+<h4 class="mt-4">Related News</h4>
+
+<ul>
+
+{% for n in related_news %}
+
+<li>{{ n }}</li>
+
+{% endfor %}
+
+</ul>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ country }} News Categories</h2>
+
+<div class="row">
+
+{% for category in categories %}
+
+<div class="col-md-3">
+
+<div class="card p-4 shadow text-center mb-3">
+
+<h4>{{ category }}</h4>
+
+<a href="/country/{{ country }}/{{ category }}"
+class="btn btn-primary">
+View News
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

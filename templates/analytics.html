@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>News Dataset Analytics</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-6">
+<div class="card p-4 shadow text-center">
+<h4>Fake News Articles</h4>
+<h2 style="color:red">{{ fake_count }}</h2>
+<p>{{ fake_percent }}% of dataset</p>
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="card p-4 shadow text-center">
+<h4>Real News Articles</h4>
+<h2 style="color:green">{{ true_count }}</h2>
+<p>{{ true_percent }}% of dataset</p>
+</div>
+</div>
+
+</div>
+
+
+<div class="card p-4 shadow">
+
+<h4 class="mb-3">Fake vs Real News Distribution</h4>
+
+<canvas id="newsChart"></canvas>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const fakeCount = {{ fake_count }};
+const trueCount = {{ true_count }};
+
+const ctx = document.getElementById('newsChart');
+
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Fake News','Real News'],
+        datasets: [{
+            data: [fakeCount,trueCount],
+            backgroundColor: ['#ff4d4d','#22c55e']
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+</script>
+
+{% endblock %}
